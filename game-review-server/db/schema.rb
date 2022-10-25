@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2022_10_24_170407) do
 
   create_table "games", force: :cascade do |t|
+    t.text "image_url"
     t.string "title"
     t.integer "price"
     t.string "genre"

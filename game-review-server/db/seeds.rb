@@ -3,10 +3,10 @@ puts "🌱 Seeding spices..."
 # Seed your database here
 
 
-elden = Game.create(title: "Elden Ring", price: 49.99, genre: "fantasy action", platform: "ps5, pc", )
-hades = Game.create(title: "Hades", price: 31.49, genre: "underworld action", platform: "ps5, xbox, pc", )
-deathloop = Game.create(title: "Deathloop", price: 19.99, genre: "action", platform: "ps4, xbox", )
-halo = Game.create(title: "Halo Infinite", price: 49.99, genre: "adventure action", platform: "xbox, pc", )
+elden = Game.create(title: "Elden Ring", price: 49.99, genre: "fantasy action", platform: "ps5, pc", image_url: "https://www.stuff.tv/wp-content/uploads/sites/2/2022/02/ER-head.jpg")
+hades = Game.create(title: "Hades", price: 31.49, genre: "underworld action", platform: "ps5, xbox, pc", image_url: "https://www.stuff.tv/wp-content/uploads/sites/2/2022/03/Wallpaper_Zagreus01.jpg?resize=2048,1151")
+deathloop = Game.create(title: "Deathloop", price: 19.99, genre: "action", platform: "ps4, xbox", image_url: "https://www.stuff.tv/wp-content/uploads/sites/2/2021/07/8._deathloop_julianna_1.jpg")
+halo = Game.create(title: "Halo Infinite", price: 49.99, genre: "adventure action", platform: "xbox, pc", image_url: "https://www.stuff.tv/wp-content/uploads/sites/2/2021/12/halo-infinite6.png")
 
 
 sam = User.create(name: "Sam")
