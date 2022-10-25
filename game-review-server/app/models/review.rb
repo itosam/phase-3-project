@@ -1,4 +1,4 @@
-class Bakery < ActiveRecord::Base
-  # add association macro here
-  has_many :baked_goods
+class Review < ActiveRecord::Base
+  belongs_to :game
+  belongs_to :user
 end

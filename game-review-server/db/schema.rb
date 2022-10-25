@@ -12,4 +12,28 @@
 
 ActiveRecord::Schema.define(version: 2022_10_24_170407) do
 
+  create_table "games", force: :cascade do |t|
+    t.string "title"
+    t.integer "price"
+    t.string "genre"
+    t.string "platform"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "score"
+    t.string "comment"
+    t.integer "game_id"
+    t.integer "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
