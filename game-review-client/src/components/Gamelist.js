@@ -18,7 +18,8 @@ const Gamelist = ({games}) => {
 
     return(
         <div>
-        {gameCards}
+        <h1>Games and Reviews</h1>
+        <>{gameCards}</>
         </div>
     )
 }

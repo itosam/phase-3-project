@@ -2,6 +2,7 @@ import React from "react";
 // import { Switch, Route } from "react-router-dom";
 // import NavBar from "./components/NavBar";
 import Home from "./components/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
