@@ -12,6 +12,7 @@ const GameReview = () => {
       .then((res) => res.json())
       .then((game) => {
         setGameInfo(game);
+        console.log(game)
       });
   }, []);
 
@@ -47,12 +48,12 @@ const GameReview = () => {
             <p>
               <strong>Reviews:</strong>
             </p>
-            <p>{gameInfo.user.review}</p>
+            <p>{gameInfo.reviews[0].comment}</p>
           </Card.Text>
         </Card.Body>
       </Card>
 
-      <GameForm/>
+      <GameForm />
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Gamelist from "./Gamelist";
 
 const Home = ({ games, sendId }) => {
