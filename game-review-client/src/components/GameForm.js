@@ -1,11 +1,36 @@
 import { Button, Form, Row, Col } from "react-bootstrap";
 import { useState, initialState } from 'react'
 
-function GameForm() {
-  const [formData, setFormData] = useState(initialState);
+function GameForm({ onAddReview }) {
+//   const [formData, setFormData] = useState(initialState);
+//   const initialState = {
+//   user: "",
+//   comment: "",
+//   score: "",
+//   };
+  
+//   const handleSubmit = (e) => {
+//   e.preventDefault();
+  
+//   let newReview = {
+//     user: formData.user,
+//     comment: formData.comment,
+//     score: formData.score,
+//   };
 
+//   fetch("http://localhost:9292/reviews", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify(newReview),
+//   })
+//     .then((res) => res.json())
+//     .then((newReview) => {
+//       onAddReview(newReview);
+//     });
+// };
   return (
     <Form
+      //onSubmit={handleSubmit}
       className="form border rounded  "
       style={{
         padding: "20%, 20%",
@@ -23,8 +48,8 @@ function GameForm() {
               id="title"
               name="title"
               placeholder="Enter name of username here"
-            // onChange={handleChange}
-            // value={formData.user}
+              // onChange={handleChange}
+              // value={formData.user}
             />
           </Col>
           <Col>
@@ -35,8 +60,8 @@ function GameForm() {
               name="rating"
               step="0.1"
               placeholder="Rating"
-            // onChange={handleChange}
-            // value={formData.rating}
+              // onChange={handleChange}
+              // value={formData.rating}
             />
           </Col>
         </Row>
@@ -49,8 +74,8 @@ function GameForm() {
           id="review"
           name="review"
           placeholder="Tell us what you think of the game!"
-        //   onChange={handleChange}
-        //   value={formData.comment}
+          //   onChange={handleChange}
+          //   value={formData.comment}
         />
         <Button variant="outline-secondary" type="submit">
           Submit Review

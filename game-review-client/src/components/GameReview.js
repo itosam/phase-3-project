@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import GameForm from "./GameForm"
+import GameForm from "./GameForm";
 import Card from "react-bootstrap/Card";
-
 
 const GameReview = () => {
   const [gameInfo, setGameInfo] = useState(null);
@@ -13,22 +12,29 @@ const GameReview = () => {
       .then((res) => res.json())
       .then((game) => {
         setGameInfo(game);
-        console.log(game)
+        console.log(game);
       });
 
     fetch("http://localhost:9292/reviews")
       .then((res) => res.json())
       .then((reviews) => {
-        setGameReviews(reviews)
-        console.log(reviews)
-      })
+        setGameReviews(reviews);
+        console.log(reviews);
+      });
   }, []);
+  //onAddReview passed down to Reviewform
+  // const onAddReview = (newReview) => {
+  //   setGameReviews([...gameReviews, newReview]);
+  // };
 
-  const displayReviews = gameReviews.map(review => {
+  const displayReviews = gameReviews.map((review) => {
     return (
-      <label style={{ fontWeight: "bold" }}>{review.user.name} <p style={{ fontWeight: "normal" }}>{review.comment}</p></label>
-    )
-  })
+      <label style={{ fontWeight: "bold" }}>
+        {review.user.name}{" "}
+        <p style={{ fontWeight: "normal" }}>{review.comment}</p>
+      </label>
+    );
+  });
 
   if (gameInfo == null) {
     return <div></div>;
