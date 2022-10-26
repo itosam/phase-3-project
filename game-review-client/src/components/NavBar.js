@@ -8,7 +8,7 @@ const NavBar = () => {
     return (
       <Navbar bg="info" variant="light" style={{ height: "40px" }}>
         <Container>
-          <Navbar.Brand href="/home">
+          <Navbar.Brand href="/home" style={{ margin: "-40px" }}>
             <strong>Gamer Reviewer</strong>
           </Navbar.Brand>
         </Container>
