@@ -3,10 +3,10 @@ puts "🌱 Seeding spices..."
 # Seed your database here
 
 
-elden = Game.create(title: "Elden Ring", price: 49.99, genre: "fantasy action", platform: "ps5, pc", image_url: "https://www.stuff.tv/wp-content/uploads/sites/2/2022/02/ER-head.jpg")
-hades = Game.create(title: "Hades", price: 31.49, genre: "underworld action", platform: "ps5, xbox, pc", image_url: "https://www.stuff.tv/wp-content/uploads/sites/2/2022/03/Wallpaper_Zagreus01.jpg?resize=2048,1151")
-deathloop = Game.create(title: "Deathloop", price: 19.99, genre: "action", platform: "ps4, xbox", image_url: "https://www.stuff.tv/wp-content/uploads/sites/2/2021/07/8._deathloop_julianna_1.jpg")
-halo = Game.create(title: "Halo Infinite", price: 49.99, genre: "adventure action", platform: "xbox, pc", image_url: "https://www.stuff.tv/wp-content/uploads/sites/2/2021/12/halo-infinite6.png")
+elden = Game.create(title: "Elden Ring", price: 49.99, genre: "fantasy action", platform: "ps5, pc", image_url: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg?t=1666286418")
+hades = Game.create(title: "Hades", price: 31.49, genre: "underworld action", platform: "ps5, xbox, pc", image_url: "https://i.ytimg.com/vi/Bz8l935Bv0Y/maxresdefault.jpg")
+deathloop = Game.create(title: "Deathloop", price: 19.99, genre: "action", platform: "ps4, xbox", image_url: "https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_DEATHLOOP_ArkaneStudios_S1_2560x1440-bf6d342edbd2411ccf24e326852fca93")
+halo = Game.create(title: "Halo Infinite", price: 49.99, genre: "adventure action", platform: "xbox, pc", image_url: "https://upload.wikimedia.org/wikipedia/en/1/14/Halo_Infinite.png")
 
 
 sam = User.create(name: "Sam")

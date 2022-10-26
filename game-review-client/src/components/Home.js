@@ -1,20 +1,12 @@
 import { useEffect, useState } from "react";
-import Gamelist from "./Gamelist"
-const Home = () => {
-    const [games, setGames] = useState([]);
-    useEffect(() => {
-    fetch("http://localhost:9292/games")
-    .then(res => res.json())
-    .then((games) => {
-        setGames(games)
-        console.log(games)
-    });
-    }, []);
+import Gamelist from "./Gamelist";
 
-    return(
+const Home = ({ games, sendId }) => {
+  return (
     <div>
-        <Gamelist games={games}/>
-    </div>)
+      <Gamelist games={games} sendId={sendId} />
+    </div>
+  );
 };
 
 export default Home;

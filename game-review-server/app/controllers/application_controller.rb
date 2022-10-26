@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
   # Add your routes here
   get "/games" do
     games = Game.all
-    games.to_json
+    games.to_json(include: { reviews: { include: :user } })
   end
 
   get '/users' do

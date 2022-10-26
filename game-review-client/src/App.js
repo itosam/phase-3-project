@@ -1,25 +1,38 @@
 import React from "react";
-// import { Switch, Route } from "react-router-dom";
-// import NavBar from "./components/NavBar";
 import Home from "./components/Home";
+import NavBar from "./components/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Route, Switch } from "react-router-dom";
+import { useEffect, useState } from "react";
+import GameReview from "./components/GameReview";
 
 const App = () => {
+  const [games, setGames] = useState([]);
+  const [id, setId] = useState(0);
+  useEffect(() => {
+    fetch("http://localhost:9292/games")
+      .then((res) => res.json())
+      .then((games) => {
+        setGames(games);
+        console.log(games);
+      });
+  }, []);
+
+  function sendId(id) {
+    setId(id);
+  }
+
   return (
     <div>
-      <Home/>
-      {/* <NavBar />
+      <NavBar />
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route> */}
-        {/* <Route path="/login">
-          <Login />
+        <Route path="/GameReview/:id">
+          <GameReview/>
         </Route>
-        <Route path="/games">
-          <Games />
-        </Route> */}
-      {/* </Switch> */}
+        <Route path="/">
+          <Home games={games} sendId={sendId} />
+        </Route>
+      </Switch>
     </div>
   );
 };
