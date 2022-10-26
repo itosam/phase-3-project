@@ -6,6 +6,7 @@ import Card from "react-bootstrap/Card";
 
 const GameReview = () => {
   const [gameInfo, setGameInfo] = useState(null);
+  const [gameReviews, setGameReviews] = useState([]);
   const { id } = useParams();
   useEffect(() => {
     fetch(`http://localhost:9292/games/${id}`)
@@ -14,7 +15,20 @@ const GameReview = () => {
         setGameInfo(game);
         console.log(game)
       });
+
+    fetch("http://localhost:9292/reviews")
+      .then((res) => res.json())
+      .then((reviews) => {
+        setGameReviews(reviews)
+        console.log(reviews)
+      })
   }, []);
+
+  const displayReviews = gameReviews.map(review => {
+    return (
+      <label style={{ fontWeight: "bold" }}>{review.user.name} <p style={{ fontWeight: "normal" }}>{review.comment}</p></label>
+    )
+  })
 
   if (gameInfo == null) {
     return <div></div>;
@@ -48,7 +62,7 @@ const GameReview = () => {
             <p>
               <strong>Reviews:</strong>
             </p>
-            <p>{gameInfo.reviews[0].comment}</p>
+            {displayReviews}
           </Card.Text>
         </Card.Body>
       </Card>

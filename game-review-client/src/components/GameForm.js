@@ -1,8 +1,9 @@
 import { Button, Form, Row, Col } from "react-bootstrap";
+import { useState, initialState } from 'react'
 
 function GameForm() {
   const [formData, setFormData] = useState(initialState);
-  
+
   return (
     <Form
       className="form border rounded  "
@@ -22,8 +23,8 @@ function GameForm() {
               id="title"
               name="title"
               placeholder="Enter name of username here"
-              // onChange={handleChange}
-              // value={formData.user}
+            // onChange={handleChange}
+            // value={formData.user}
             />
           </Col>
           <Col>
@@ -34,13 +35,13 @@ function GameForm() {
               name="rating"
               step="0.1"
               placeholder="Rating"
-              // onChange={handleChange}
-              // value={formData.rating}
+            // onChange={handleChange}
+            // value={formData.rating}
             />
           </Col>
         </Row>
-        <br/>
-        ​<Form.Label htmlFor="comments">Review Comments</Form.Label>
+        <br />
+        <Form.Label htmlFor="comments">Review Comments</Form.Label>
         <Form.Control
           className="my-3"
           as="textarea"
@@ -48,8 +49,8 @@ function GameForm() {
           id="review"
           name="review"
           placeholder="Tell us what you think of the game!"
-          //   onChange={handleChange}
-          //   value={formData.comment}
+        //   onChange={handleChange}
+        //   value={formData.comment}
         />
         <Button variant="outline-secondary" type="submit">
           Submit Review

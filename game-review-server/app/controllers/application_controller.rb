@@ -24,7 +24,9 @@ class ApplicationController < Sinatra::Base
 
   get '/reviews' do
     review = Review.all
-    review.to_json(include: :user)
+    review.to_json(only: [:id, :score, :comment, :game_id, :user_id, :created_at, :updated_at], include: {
+      user: { only: [:id, :name]}
+    })
   end
 
   post '/reviews' do
