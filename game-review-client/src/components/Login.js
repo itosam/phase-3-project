@@ -59,7 +59,7 @@ function Login({ returnUserId }) {
 
     return (<div>
         <div id='formBox'>
-            <h3>Welcome to iShopping</h3>
+            <h3>Welcome to Gamer Reviewer</h3>
             <h1>Login</h1>
             <p style={style}>{message}</p>
             <form onSubmit={validateUser}>

@@ -1,6 +1,8 @@
 import { Button, Form, Row, Col } from "react-bootstrap";
 
 function GameForm() {
+  const [formData, setFormData] = useState(initialState);
+  
   return (
     <Form
       className="form border rounded  "

@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
 
   get '/reviews' do
     review = Review.all
-    review.to_json
+    review.to_json(include: :user)
   end
 
   post '/reviews' do
