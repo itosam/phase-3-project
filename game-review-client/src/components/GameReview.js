@@ -47,7 +47,7 @@ const GameReview = () => {
             <p>
               <strong>Reviews:</strong>
             </p>
-            <p>{gameInfo.reviews.all}</p>
+            <p>{gameInfo.user.review}</p>
           </Card.Text>
         </Card.Body>
       </Card>

@@ -37,6 +37,7 @@ function GameForm() {
             />
           </Col>
         </Row>
+        <br/>
         ​<Form.Label htmlFor="comments">Review Comments</Form.Label>
         <Form.Control
           className="my-3"
@@ -48,8 +49,7 @@ function GameForm() {
           //   onChange={handleChange}
           //   value={formData.comment}
         />
-        <br />
-        <Button variant="" type="submit">
+        <Button variant="outline-secondary" type="submit">
           Submit Review
         </Button>
       </Form.Group>
