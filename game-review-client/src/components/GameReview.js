@@ -7,6 +7,7 @@ const GameReview = () => {
   const [gameInfo, setGameInfo] = useState(null);
   const [gameReviews, setGameReviews] = useState([]);
   const { id } = useParams();
+
   useEffect(() => {
     fetch(`http://localhost:9292/games/${id}`)
       .then((res) => res.json())
@@ -22,18 +23,14 @@ const GameReview = () => {
         console.log(reviews);
       });
   }, []);
-  //onAddReview passed down to Reviewform
-  // const onAddReview = (newReview) => {
-  //   setGameReviews([...gameReviews, newReview]);
-  // };
+
+  // onAddReview passed down to Reviewform
+  const onAddReview = (newReview) => {
+    setGameReviews([...gameReviews, newReview]);
+  };
 
   const displayReviews = gameReviews.map((review) => {
-    return (
-      <label style={{ fontWeight: "bold" }}>
-        {review.user.name}{" "}
-        <p style={{ fontWeight: "normal" }}>{review.comment}</p>
-      </label>
-    );
+    // return <label style={{ fontWeight: "bold" }}>{[review]}</label>;
   });
 
   if (gameInfo == null) {
@@ -73,7 +70,7 @@ const GameReview = () => {
         </Card.Body>
       </Card>
 
-      <GameForm />
+      <GameForm gameId={id} onAddReview={onAddReview} />
     </div>
   );
 };

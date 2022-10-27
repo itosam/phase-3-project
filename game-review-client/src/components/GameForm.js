@@ -1,36 +1,37 @@
 import { Button, Form, Row, Col } from "react-bootstrap";
-import { useState, initialState } from 'react'
+import { useState } from "react";
+function GameForm({ gameId, onAddReview }) {
+  const initialState = {
+    user_id: "",
+    game_id: gameId,
+    comment: "",
+    score: "",
+  };
 
-function GameForm({ onAddReview }) {
-//   const [formData, setFormData] = useState(initialState);
-//   const initialState = {
-//   user: "",
-//   comment: "",
-//   score: "",
-//   };
-  
-//   const handleSubmit = (e) => {
-//   e.preventDefault();
-  
-//   let newReview = {
-//     user: formData.user,
-//     comment: formData.comment,
-//     score: formData.score,
-//   };
+  const [formData, setFormData] = useState(initialState);
 
-//   fetch("http://localhost:9292/reviews", {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(newReview),
-//   })
-//     .then((res) => res.json())
-//     .then((newReview) => {
-//       onAddReview(newReview);
-//     });
-// };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(JSON.stringify(formData));
+    fetch("http://localhost:9292/reviews", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((newReview) => {
+        onAddReview(newReview);
+      });
+  };
+
+  function handleChange(e) {
+    e.preventDefault();
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
   return (
     <Form
-      //onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
       className="form border rounded  "
       style={{
         padding: "20%, 20%",
@@ -46,10 +47,10 @@ function GameForm({ onAddReview }) {
             <Form.Control
               type="text"
               id="title"
-              name="title"
+              name="user_id"
               placeholder="Enter name of username here"
-              // onChange={handleChange}
-              // value={formData.user}
+              onChange={handleChange}
+              value={formData.user}
             />
           </Col>
           <Col>
@@ -57,11 +58,11 @@ function GameForm({ onAddReview }) {
             <Form.Control
               type="number"
               id="rating"
-              name="rating"
+              name="score"
               step="0.1"
               placeholder="Rating"
-              // onChange={handleChange}
-              // value={formData.rating}
+              onChange={handleChange}
+              value={formData.rating}
             />
           </Col>
         </Row>
@@ -72,10 +73,10 @@ function GameForm({ onAddReview }) {
           as="textarea"
           rows={3}
           id="review"
-          name="review"
+          name="comment"
           placeholder="Tell us what you think of the game!"
-          //   onChange={handleChange}
-          //   value={formData.comment}
+          onChange={handleChange}
+          value={formData.comment}
         />
         <Button variant="outline-secondary" type="submit">
           Submit Review
