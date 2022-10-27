@@ -9,7 +9,7 @@ import Login from "./components/Login";
 
 const App = () => {
   const [games, setGames] = useState([]);
-  const [id, setId] = useState(0);
+  const [id, setId] = useState(1);
   const [userLoggedIn, setUserLoggedIn] = useState(true);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const App = () => {
       {userLoggedIn ? (
         <Switch>
           <Route path="/GameReview/:id">
-            <GameReview />
+            <GameReview currentUserId={id} />
           </Route>
           <Route path="/">
             <Home games={games} />

@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GameForm from "./GameForm";
 import Card from "react-bootstrap/Card";
+import uuid from "react-uuid";
 
-const GameReview = () => {
+const GameReview = ({ currentUserId }) => {
   const [gameInfo, setGameInfo] = useState(null);
   const [gameReviews, setGameReviews] = useState([]);
   const { id } = useParams();
@@ -13,14 +14,8 @@ const GameReview = () => {
       .then((res) => res.json())
       .then((game) => {
         setGameInfo(game);
-        console.log(game);
-      });
-
-    fetch("http://localhost:9292/reviews")
-      .then((res) => res.json())
-      .then((reviews) => {
-        setGameReviews(reviews);
-        console.log(reviews);
+        setGameReviews(game.reviews);
+        console.log(gameReviews)
       });
   }, []);
 
@@ -29,8 +24,33 @@ const GameReview = () => {
     setGameReviews([...gameReviews, newReview]);
   };
 
+  function handleDelete(e) {
+    const filtered = gameReviews.filter(
+      (review) => review.id !== parseInt(e.target.id)
+    );
+    fetch(`http://localhost:9292/reviews/${e.target.id}`, {
+      method: "DELETE",
+    }).then(setGameReviews(filtered));
+  }
+
   const displayReviews = gameReviews.map((review) => {
-    // return <label style={{ fontWeight: "bold" }}>{[review]}</label>;
+    return (
+      <div key={uuid()}>
+        <label style={{ fontWeight: "bold" }}>{review.user.name}</label>
+        <p style={{ fontWeight: "normal" }}>
+          <strong>Score:</strong> {review.score}<br/>
+          {review.comment}
+          <label
+            id={review.id}
+            style={{ marginLeft: "10px" }}
+            onClick={handleDelete}
+          >
+            {" "}
+            ❌
+          </label>
+        </p>
+      </div>
+    );
   });
 
   if (gameInfo == null) {
@@ -39,7 +59,7 @@ const GameReview = () => {
 
   return (
     <div>
-      <Card className="card" style={{ width: "50%" }}>
+      <Card className="card" style={{ width: "60%" }}>
         <Card.Img
           variant="top"
           src={gameInfo.image_url}
@@ -70,7 +90,11 @@ const GameReview = () => {
         </Card.Body>
       </Card>
 
-      <GameForm gameId={id} onAddReview={onAddReview} />
+      <GameForm
+        gameId={id}
+        onAddReview={onAddReview}
+        currentUserId={currentUserId}
+      />
     </div>
   );
 };

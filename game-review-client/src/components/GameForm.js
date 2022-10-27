@@ -1,11 +1,11 @@
 import { Button, Form, Row, Col } from "react-bootstrap";
 import { useState } from "react";
-function GameForm({ gameId, onAddReview }) {
+function GameForm({ gameId, onAddReview, currentUserId }) {
   const initialState = {
-    user_id: "",
-    game_id: gameId,
+    score: parseInt(0),
     comment: "",
-    score: "",
+    game_id: parseInt(gameId),
+    user_id: parseInt(currentUserId),
   };
 
   const [formData, setFormData] = useState(initialState);
@@ -26,7 +26,10 @@ function GameForm({ gameId, onAddReview }) {
 
   function handleChange(e) {
     e.preventDefault();
+
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    console.log(formData);
   }
 
   return (
@@ -43,26 +46,16 @@ function GameForm({ gameId, onAddReview }) {
         <h3>Add A New Review</h3>
         <Row>
           <Col>
-            <Form.Label htmlFor="Username">Name/Username</Form.Label>
-            <Form.Control
-              type="text"
-              id="title"
-              name="user_id"
-              placeholder="Enter name of username here"
-              onChange={handleChange}
-              value={formData.user}
-            />
-          </Col>
-          <Col>
-            <Form.Label htmlFor="rating">Rating</Form.Label>
+            <Form.Label htmlFor="score">Score</Form.Label>
             <Form.Control
               type="number"
-              id="rating"
+              id="score"
               name="score"
               step="0.1"
-              placeholder="Rating"
+              placeholder="Score"
               onChange={handleChange}
-              value={formData.rating}
+              value={parseInt(formData.score)}
+              required
             />
           </Col>
         </Row>
@@ -77,6 +70,7 @@ function GameForm({ gameId, onAddReview }) {
           placeholder="Tell us what you think of the game!"
           onChange={handleChange}
           value={formData.comment}
+          required
         />
         <Button variant="outline-secondary" type="submit">
           Submit Review
