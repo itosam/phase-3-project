@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2022_10_28_041841) do
     t.string "title"
     t.integer "price"
     t.string "genre"
+    t.string "description"
     t.string "platform"
     t.datetime "created_at"
     t.datetime "updated_at"

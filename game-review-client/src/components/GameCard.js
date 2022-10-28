@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const GameCards = ({ id, title, price, image, genre }) => {
+const GameCards = ({ id, title, price, image, genre, description }) => {
   
 
   return (

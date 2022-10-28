@@ -82,6 +82,11 @@ const GameReview = ({ currentUserId }) => {
           </Card.Title>
           <div>
             <p>
+              <strong>Description:</strong>
+              <br />
+              {gameInfo.description}
+            </p>
+            <p>
               <strong>Genre:</strong> {gameInfo.genre}
             </p>
             <p>

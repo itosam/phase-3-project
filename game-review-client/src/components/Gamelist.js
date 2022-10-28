@@ -8,6 +8,7 @@ const Gamelist = ({ games }) => {
         key={game.id}
         id={game.id}
         title={game.title}
+        description={game.description}
         genre={game.genre}
         price={game.price}
         platform={game.platform}
