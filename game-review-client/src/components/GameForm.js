@@ -35,11 +35,10 @@ function GameForm({ gameId, onAddReview, currentUserId }) {
   return (
     <Form
       onSubmit={handleSubmit}
-      className="form border rounded  "
+      className="form border rounded mx-aut "
       style={{
-        padding: "20%, 20%",
-        marginBottom: "2rem",
-        marginTop: "10%",
+        width: "80%",
+        marginLeft: "10%",
       }}
     >
       <Form.Group className="my-3 mx-3">

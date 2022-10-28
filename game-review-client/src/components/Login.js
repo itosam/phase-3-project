@@ -59,7 +59,7 @@ function Login({ returnUserId }) {
               <Card.Body>
                 <div className="mb-3 mt-md-4">
                   <h2 className="fw-bold mb-2 text-uppercase ">
-                    Welcome to Gamer Reviewer
+                    Welcome to Game Invader
                   </h2>
                   <p className=" mb-5">
                     Please enter your login and password!

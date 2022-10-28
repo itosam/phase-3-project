@@ -3,35 +3,43 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import GameReview from "./GameReview";
 
-const GameCards = ({ id, title, price, image, genre }) => {
-
+const GameCards = ({ id, title, price, image, genre, sendId }) => {
+  function handleId() {
+    sendId(id);
+  }
 
   return (
-    <Card className="card" style={{ width: "20rem" }}>
+    <Card
+      className="card"
+      bg="info"
+      variant="light"
+      style={{ width: "20rem", padding: "1rem", margin: "1rem", border: "2px" }}
+    >
       <Card.Img
         variant="top"
         src={image}
         alt={title}
-        style={{ width: "100%" }}
+        style={{ width: "18rem" }}
       />
       <Card.Body style={{ textAlign: "left" }}>
         <Card.Title>
           <strong>{title}</strong>
           <br />
         </Card.Title>
-        <Card.Text>
+        <div>
           <p>
             <strong>Genre:</strong> {genre}
           </p>
           <p>
             <strong>Price:</strong> ${price}
           </p>
-        </Card.Text>
+        </div>
         <NavLink to={`/GameReview/${id}`}>
           <Button
-            variant="outline-secondary"
+            variant="outline-dark"
             size="sm"
             style={{ border: "solid 2px" }}
+            onClick={handleId}
           >
             View Game Review
           </Button>

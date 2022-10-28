@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GameForm from "./GameForm";
-import Card from "react-bootstrap/Card";
+import { Card, Container } from "react-bootstrap";
 import uuid from "react-uuid";
 
 const GameReview = ({ currentUserId }) => {
@@ -15,6 +15,7 @@ const GameReview = ({ currentUserId }) => {
       .then((game) => {
         setGameInfo(game);
         setGameReviews(game.reviews);
+        console.log(gameReviews);
       });
   }, []);
 
@@ -37,7 +38,8 @@ const GameReview = ({ currentUserId }) => {
       <div key={uuid()}>
         <label style={{ fontWeight: "bold" }}>{review.user.name}</label>
         <p style={{ fontWeight: "normal" }}>
-          <strong>Score:</strong> {review.score}<br />
+          <strong>Score:</strong> {review.score}
+          <br />
           {review.comment}
           <label
             id={review.id}
@@ -57,8 +59,17 @@ const GameReview = ({ currentUserId }) => {
   }
 
   return (
-    <div>
-      <Card className="card" style={{ width: "60%" }}>
+    <Container>
+      <Card
+        className="mx-aut"
+        style={{
+          width: "80%",
+          padding: "1rem",
+          marginLeft: "10%",
+          marginTop: "2%",
+          marginBottom: "2%",
+        }}
+      >
         <Card.Img
           variant="top"
           src={gameInfo.image_url}
@@ -70,7 +81,7 @@ const GameReview = ({ currentUserId }) => {
             <strong>{gameInfo.title}</strong>
             <br />
           </Card.Title>
-          <Card.Text>
+          <div>
             <p>
               <strong>Genre:</strong> {gameInfo.genre}
             </p>
@@ -85,7 +96,7 @@ const GameReview = ({ currentUserId }) => {
               <strong>Reviews:</strong>
             </p>
             {displayReviews}
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
 
@@ -94,7 +105,7 @@ const GameReview = ({ currentUserId }) => {
         onAddReview={onAddReview}
         currentUserId={currentUserId}
       />
-    </div>
+    </Container>
   );
 };
 
