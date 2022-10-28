@@ -1,15 +1,13 @@
 import { Button, Form, Row, Col } from "react-bootstrap";
 import { useState } from "react";
-function GameForm({ gameId, onAddReview, currentUserId }) {
+function GameForm({ gameId, onAddReview, currentUserId, changeReview }) {
   const initialState = {
     score: parseInt(0),
     comment: "",
     game_id: parseInt(gameId),
     user_id: parseInt(currentUserId),
   };
-
   const [formData, setFormData] = useState(initialState);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(JSON.stringify(formData));
@@ -21,21 +19,17 @@ function GameForm({ gameId, onAddReview, currentUserId }) {
       .then((res) => res.json())
       .then((newReview) => {
         onAddReview(newReview);
+        changeReview();
       });
   };
-
   function handleChange(e) {
     e.preventDefault();
-
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
-    console.log(formData);
   }
-
   return (
     <Form
       onSubmit={handleSubmit}
-      className="form border rounded mx-aut "
+      className="form border rounded  "
       style={{
         width: "80%",
         marginLeft: "10%",
@@ -52,6 +46,8 @@ function GameForm({ gameId, onAddReview, currentUserId }) {
               name="score"
               step="0.1"
               placeholder="Score"
+              min="1"
+              max="5"
               onChange={handleChange}
               value={parseInt(formData.score)}
               required
@@ -78,5 +74,4 @@ function GameForm({ gameId, onAddReview, currentUserId }) {
     </Form>
   );
 }
-
 export default GameForm;
