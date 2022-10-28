@@ -33,7 +33,7 @@ function AccountInfo({ currentUserId, handleLogout }) {
 
     return (
         <div>
-            <Card className="card" style={{ width: "60%" }}>
+            <Card className="card" style={{ width: "60%", margin:"auto"}}>
                 {/* <Card.Img
                     variant="top"
                     src={gameInfo.image_url}

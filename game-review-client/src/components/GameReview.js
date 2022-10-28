@@ -15,7 +15,6 @@ const GameReview = ({ currentUserId }) => {
       .then((game) => {
         setGameInfo(game);
         setGameReviews(game.reviews);
-        console.log(gameReviews);
       });
   }, []);
 
@@ -36,7 +35,7 @@ const GameReview = ({ currentUserId }) => {
   const displayReviews = gameReviews.map((review) => {
     return (
       <div key={uuid()}>
-        <label style={{ fontWeight: "bold" }}>{review.user.name}</label>
+        <label style={{ fontWeight: "bold" }}>{review.user.username}</label>
         <p style={{ fontWeight: "normal" }}>
           <strong>Score:</strong> {review.score}
           <br />

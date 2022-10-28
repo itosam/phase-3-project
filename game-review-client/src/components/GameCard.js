@@ -1,12 +1,9 @@
 import { NavLink } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import GameReview from "./GameReview";
 
-const GameCards = ({ id, title, price, image, genre, sendId }) => {
-  function handleId() {
-    sendId(id);
-  }
+const GameCards = ({ id, title, price, image, genre }) => {
+  
 
   return (
     <Card
@@ -39,7 +36,7 @@ const GameCards = ({ id, title, price, image, genre, sendId }) => {
             variant="outline-dark"
             size="sm"
             style={{ border: "solid 2px" }}
-            onClick={handleId}
+            
           >
             View Game Review
           </Button>

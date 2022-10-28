@@ -55,15 +55,13 @@ function Login({ returnUserId }) {
       <Container>
         <Row className="vh-100 d-flex justify-content-center align-items-center">
           <Col md={8} lg={6} xs={12}>
-            <Card className="shadow">
+            <Card className="shadow" bg="info" variant="light">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
                   <h2 className="fw-bold mb-2 text-uppercase ">
                     Welcome to Game Invader
                   </h2>
-                  <p className=" mb-5">
-                    Please enter your login and password!
-                  </p>
+                  <p className=" mb-5">Please enter your login and password!</p>
                   {/* <p style={style}>{message}</p> */}
                   <div className="mb-3">
                     <Form onSubmit={validateUser}>
@@ -102,7 +100,7 @@ function Login({ returnUserId }) {
                         </p>
                       </Form.Group>
                       <div className="d-grid">
-                        <Button variant="outline-secondary" type="submit">
+                        <Button variant="outline-dark" type="submit">
                           {message}
                         </Button>
                       </div>
@@ -110,7 +108,10 @@ function Login({ returnUserId }) {
                     <div className="mt-3">
                       <p className="mb-0  text-center">
                         Don't have an account?{" "}
-                        <a href="/createAccount" className="text-primary fw-bold">
+                        <a
+                          href="/createAccount"
+                          className="text-primary fw-bold"
+                        >
                           Sign Up
                         </a>
                       </p>
