@@ -1,6 +1,6 @@
 import GameCard from "./GameCard";
 
-const Gamelist = ({ games, sendId }) => {
+const Gamelist = ({ games }) => {
   const gameCards = games.map((game) => {
     return (
       <GameCard
@@ -11,7 +11,6 @@ const Gamelist = ({ games, sendId }) => {
         price={game.price}
         platform={game.platform}
         image={game.image_url}
-        sendId={sendId}
       />
     );
   });

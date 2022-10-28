@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_26_191549) do
+ActiveRecord::Schema.define(version: 2022_10_28_041841) do
 
   create_table "games", force: :cascade do |t|
     t.text "image_url"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2022_10_26_191549) do
     t.datetime "updated_at"
     t.string "username"
     t.string "password"
+    t.string "lastname"
   end
 
 end

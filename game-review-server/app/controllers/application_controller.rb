@@ -2,16 +2,19 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # Add your routes here
+
+  #Games route
   get "/games" do
     games = Game.all
     games.to_json(include: { reviews: { include: :user } })
   end
   
-  get '/games/:id/reviews' do
-      reviews = Game.find(params[:id]).reviews
-      reviews.to_json
-  end
+  # get '/games/:id/reviews' do
+  #     reviews = Game.find(params[:id]).reviews
+  #     reviews.to_json
+  # end
 
+  #Users routes
   get '/users' do
     users = User.all
     users.to_json
@@ -22,15 +25,37 @@ class ApplicationController < Sinatra::Base
     user.to_json
   end
 
+  post '/users' do
+    newUser = User.new(params)
+    newUser.save
+    newUser.to_json
+  end
+
+  patch '/users/:id' do
+    updateUser = User.find(params[:id])
+    updateUser[:password] = params[:password]
+    updateUser.save
+    User.find(params[:id]).to_json
+  end
+
+  delete '/users/:id' do
+    deleteUser = User.find(params[:id])
+    deleteUser.reviews.destroy_all
+    deleteUser.destroy
+    deleteUser.save
+  end
+
   get '/games/:id' do
     game = Game.find(params[:id])
     game.to_json(include: { reviews: { include: :user } })
   end
 
-  get '/reviews/:id' do
+  #Reviews route
+
+  get '/reviews' do
     reviews = Review.all
     reviews.to_json(only: [:id, :score, :comment, :game_id, :user_id, :created_at, :updated_at], include: {
-      user: { only: [:id, :name]}
+      user: { only: [:id, :name, :lastname]}
     })
   end
 
@@ -44,9 +69,5 @@ class ApplicationController < Sinatra::Base
     review = Review.find(params[:id])
     review.destroy
   end
-  
-
-
-  
 
 end

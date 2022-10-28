@@ -15,7 +15,6 @@ const GameReview = ({ currentUserId }) => {
       .then((game) => {
         setGameInfo(game);
         setGameReviews(game.reviews);
-        console.log(gameReviews)
       });
   }, []);
 
@@ -38,7 +37,7 @@ const GameReview = ({ currentUserId }) => {
       <div key={uuid()}>
         <label style={{ fontWeight: "bold" }}>{review.user.name}</label>
         <p style={{ fontWeight: "normal" }}>
-          <strong>Score:</strong> {review.score}<br/>
+          <strong>Score:</strong> {review.score}<br />
           {review.comment}
           <label
             id={review.id}

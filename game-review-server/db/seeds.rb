@@ -9,10 +9,10 @@ deathloop = Game.create(title: "Deathloop", price: 19.99, genre: "action", platf
 halo = Game.create(title: "Halo Infinite", price: 49.99, genre: "adventure action", platform: "xbox, pc", image_url: "https://upload.wikimedia.org/wikipedia/en/1/14/Halo_Infinite.png")
 
 
-sam = User.create(name: "Sam", username: "sam", password: "sam123")
-joshua = User.create(name: "Joshua", username: "joshua", password: "joshua123")
-ismael = User.create(name: "Ismael", username: "ismael", password: "ismael123")
-tyler = User.create(name: "Tyler", username: "tyler", password: "tyler123")
+sam = User.create(name: "Sam", lastname:"Ito", username: "sam", password: "sam123")
+joshua = User.create(name: "Joshua", lastname:"Campos", username: "joshua", password: "joshua123")
+ismael = User.create(name: "Ismael", lastname:"Aceves", username: "ismael", password: "ismael123")
+tyler = User.create(name: "Tyler", lastname:"Martinez", username: "tyler", password: "tyler123")
 
 
 Review.create(score: 5, comment:"This is a amazing game to play", game_id: elden.id, user_id: sam.id)

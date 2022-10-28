@@ -1,9 +1,9 @@
 import Gamelist from "./Gamelist";
 
-const Home = ({ games, sendId }) => {
+const Home = ({ games }) => {
   return (
     <div>
-      <Gamelist games={games} sendId={sendId} />
+      <Gamelist games={games} />
     </div>
   );
 };
