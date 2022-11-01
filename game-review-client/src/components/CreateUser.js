@@ -7,7 +7,6 @@ function CreateUser({ returnUserId }) {
 
     const [name, setName] = useState(null);
     const [lastName, setlastName] = useState(null);
-    const [Address, setAddress] = useState(null);
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
     const [confirmP, setConfirmP] = useState(null);
@@ -51,7 +50,7 @@ function CreateUser({ returnUserId }) {
                 "password": password
             };
 
-            fetch('http://localhost:9292/users', {
+            fetch('https://haunted-labyrinth-78551.herokuapp.com/users', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"

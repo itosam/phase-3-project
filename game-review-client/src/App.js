@@ -17,7 +17,7 @@ const App = () => {
   const navigate = useHistory();
 
   useEffect(() => {
-    fetch("http://localhost:9292/games")
+    fetch("https://haunted-labyrinth-78551.herokuapp.com/games")
       .then((res) => res.json())
       .then((games) => {
         setGames(games);

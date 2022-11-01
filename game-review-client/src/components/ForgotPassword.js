@@ -21,7 +21,7 @@ function ForgotPassword() {
     const navigate = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:9292/users')
+        fetch('https://haunted-labyrinth-78551.herokuapp.com/users')
             .then(r => r.json())
             .then(data => setUsers(data))
     }, [])

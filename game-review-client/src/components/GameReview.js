@@ -10,7 +10,7 @@ const GameReview = ({ currentUserId }) => {
   const [reviewUpdate, setReviewUpdate] = useState(false);
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:9292/games/${id}`)
+    fetch(`https://haunted-labyrinth-78551.herokuapp.com/games/${id}`)
       .then((res) => res.json())
       .then((game) => {
         setGameInfo(game);
@@ -18,7 +18,7 @@ const GameReview = ({ currentUserId }) => {
       });
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:9292//gamesReview/${id}`)
+    fetch(`https://haunted-labyrinth-78551.herokuapp.com/gamesReview/${id}`)
       .then((r) => r.json())
       .then((score) => setReviewScore(score));
   }, [reviewUpdate]);
@@ -29,15 +29,20 @@ const GameReview = ({ currentUserId }) => {
   const onAddReview = (newReview) => {
     setGameReviews([...gameReviews, newReview]);
   };
+
   function handleDelete(e) {
+
     const filtered = gameReviews.filter(
-      (review) => review.id !== parseInt(e.target.id)
+      (review) => {
+        return review.id !== parseInt(e.target.id)
+      }
     );
-    fetch(`http://localhost:9292/reviews/${e.target.id}`, {
+    fetch(`https://haunted-labyrinth-78551.herokuapp.com/reviews/${e.target.id}`, {
       method: "DELETE",
     })
       .then(setGameReviews(filtered))
       .then(changeReview());
+
   }
   const displayReviews = gameReviews.map((review) => {
     return (
@@ -59,55 +64,7 @@ const GameReview = ({ currentUserId }) => {
       </div>
     );
   });
-  document.addEventListener("DOMContentLoaded", function () {
-    (function () {
-      let sr = document.querySelectorAll(".my-star");
-      let i = 0;
-      //loop through stars
-      while (i < sr.length) {
-        //attach click event
-        sr[i].addEventListener("click", function () {
-          //current star
-          let cs = parseInt(this.getAttribute("data-star"));
-          //output current clicked star value
-          document.querySelector("#output").value = cs;
-          /*our first loop to set the class on preceding star elements*/
-          let pre = cs; //set the current star value
-          //loop through and set the active class on preceding stars
-          while (1 <= pre) {
-            //check if the classlist contains the active class, if not, add the class
-            if (
-              !document
-                .querySelector(".star-" + pre)
-                .classList.contains("is-active")
-            ) {
-              document.querySelector(".star-" + pre).classList.add("is-active");
-            }
-            //decrement our current index
-            --pre;
-          } //end of first loop
-          /*our second loop to unset the class on succeeding star elements*/
-          //loop through and unset the active class, skipping the current star
-          let succ = cs + 1;
-          while (5 >= succ) {
-            //check if the classlist contains the active class, if yes, remove the class
-            if (
-              document
-                .querySelector(".star-" + succ)
-                .classList.contains("is-active")
-            ) {
-              document
-                .querySelector(".star-" + succ)
-                .classList.remove("is-active");
-            }
-            //increment current index
-            ++succ;
-          }
-        }); //end of click event
-        i++;
-      } //end of while loop
-    })(); //end of function
-  });
+
   if (gameInfo == null) {
     return <div></div>;
   }
@@ -149,7 +106,7 @@ const GameReview = ({ currentUserId }) => {
             <p>
               <strong>Rating:</strong>
             </p>
-            <h4>--{reviewScore} out of 5 stars--</h4>
+            <h4>--{Math.round(reviewScore)} out of 5 stars--</h4>
             <p>
               <strong>Reviews:</strong>
             </p>

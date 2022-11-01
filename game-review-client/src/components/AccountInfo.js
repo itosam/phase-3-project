@@ -7,7 +7,7 @@ function AccountInfo({ currentUserId, handleLogout }) {
     const [confirmD, setConfirmD] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:9292/users/${currentUserId}`)
+        fetch(`https://haunted-labyrinth-78551.herokuapp.com/users/${currentUserId}`)
             .then((res) => res.json())
             .then((user) => {
                 setUserInfo(user);
@@ -26,14 +26,14 @@ function AccountInfo({ currentUserId, handleLogout }) {
     }
 
     function deleteAccount() {
-        fetch(`http://localhost:9292/users/${currentUserId}`, {
+        fetch(`https://haunted-labyrinth-78551.herokuapp.com/users/${currentUserId}`, {
             method: "DELETE",
         }).then(handleLogout)
     }
 
     return (
         <div>
-            <Card className="card" style={{ width: "60%", margin:"auto"}}>
+            <Card className="card" style={{ width: "60%", margin: "auto" }}>
                 {/* <Card.Img
                     variant="top"
                     src={gameInfo.image_url}

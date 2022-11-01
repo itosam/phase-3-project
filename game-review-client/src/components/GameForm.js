@@ -11,7 +11,7 @@ function GameForm({ gameId, onAddReview, currentUserId, changeReview }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(JSON.stringify(formData));
-    fetch("http://localhost:9292/reviews", {
+    fetch("https://haunted-labyrinth-78551.herokuapp.com/reviews", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
