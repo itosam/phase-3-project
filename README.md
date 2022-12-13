@@ -1,5 +1,7 @@
 # Phase 3 Project
 
+![gameinvaderdemo](https://user-images.githubusercontent.com/96760206/207422666-523da54f-fac0-47db-b12b-4e3caa125fea.gif)
+
 ## Introduction
 
 This is our phase 3 React Project by Joshua Campos, Ismael Aceves, and Sam Ito
