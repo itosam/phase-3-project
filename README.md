@@ -4,6 +4,9 @@
 
 ## Introduction
 
+<a href = https://youtu.be/dOsQ_dDmvIg><strong> DEMO Video Link</stong></a>
+
+
 This is our phase 3 React Project by Joshua Campos, Ismael Aceves, and Sam Ito
 
 The focus of this project is **building a Sinatra API backend** that uses
